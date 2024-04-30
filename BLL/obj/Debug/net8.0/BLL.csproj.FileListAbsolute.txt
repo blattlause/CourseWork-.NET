@@ -1,0 +1,16 @@
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.csproj.AssemblyReference.cache
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.AssemblyInfoInputs.cache
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.AssemblyInfo.cs
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.csproj.CoreCompileInputs.cache
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\bin\Debug\net8.0\BLL.deps.json
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\bin\Debug\net8.0\BLL.dll
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\bin\Debug\net8.0\BLL.pdb
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\bin\Debug\net8.0\DAL.dll
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\bin\Debug\net8.0\DAL.pdb
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\bin\Debug\net8.0\DAL.dll.config
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.csproj.CopyComplete
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.dll
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\refint\BLL.dll
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.pdb
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\ref\BLL.dll

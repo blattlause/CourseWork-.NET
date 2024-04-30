@@ -1,0 +1,15 @@
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\bin\Debug\net8.0\DAL.deps.json
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\bin\Debug\net8.0\DAL.runtimeconfig.json
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\bin\Debug\net8.0\DAL.dll
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\bin\Debug\net8.0\DAL.pdb
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.csproj.AssemblyReference.cache
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.AssemblyInfoInputs.cache
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.AssemblyInfo.cs
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.csproj.CoreCompileInputs.cache
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.dll
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\refint\DAL.dll
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.pdb
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.genruntimeconfig.cache
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\ref\DAL.dll
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\bin\Debug\net8.0\DAL.dll.config
