@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using CourceWork;
+using CourceWork.Areas.Data;
 
 namespace CourceWork
 {
@@ -23,8 +24,8 @@ namespace CourceWork
 
             
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContextUI>(); // �������� ������������ Identity � ������� DbContext
+            builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<ApplicationDbContextUI>(); 
 
             builder.Services.AddRazorPages();
             builder.Services.AddControllersWithViews();
