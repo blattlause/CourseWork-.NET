@@ -13,39 +13,34 @@ namespace DAL.Repositories
     public class DiagnosisRepository: IDiagnosisRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<Diagnosis> table = null;
 
-
-        public DiagnosisRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<Diagnosis>();
-        }
         public DiagnosisRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<Diagnosis>();
+            DataBase.Diagnosis = db.Set<Diagnosis>();
         }
 
         public void Add(Diagnosis entity)
         {
-            table.Add(entity);
+            DataBase.Diagnosis.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            Diagnosis existing = table.Find(id);
-            table.Remove(existing);
+            Diagnosis existing = DataBase.Diagnosis.Find(id);
+            DataBase.Diagnosis.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public Diagnosis GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.Diagnosis.Find(id);
         }
 
         public IList<Diagnosis> GetAll()
         {
-            return table.ToList();
+            return DataBase.Diagnosis.ToList();
         }
 
         public void SaveAll(IEnumerable<Diagnosis> updatalist)
@@ -55,8 +50,9 @@ namespace DAL.Repositories
 
         public void Update(Diagnosis entity)
         {
-            table.Attach(entity);
+            DataBase.Diagnosis.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
 
         public void Save()

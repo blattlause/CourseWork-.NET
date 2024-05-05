@@ -12,39 +12,34 @@ namespace DAL.Repositories
     public class ServiceVisitRepository: IServiceVisitRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<ServiceVisit> table = null;
 
-
-        public ServiceVisitRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<ServiceVisit>();
-        }
         public ServiceVisitRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<ServiceVisit>();
+            DataBase.ServiceVisit = db.Set<ServiceVisit>();
         }
 
         public void Add(ServiceVisit entity)
         {
-            table.Add(entity);
+            DataBase.ServiceVisit.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            ServiceVisit existing = table.Find(id);
-            table.Remove(existing);
+            ServiceVisit existing = DataBase.ServiceVisit.Find(id);
+            DataBase.ServiceVisit.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public ServiceVisit GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.ServiceVisit.Find(id);
         }
 
         public IList<ServiceVisit> GetAll()
         {
-            return table.ToList();
+            return DataBase.ServiceVisit.ToList();
         }
 
         public void SaveAll(IEnumerable<ServiceVisit> updatalist)
@@ -54,8 +49,9 @@ namespace DAL.Repositories
 
         public void Update(ServiceVisit entity)
         {
-            table.Attach(entity);
+            DataBase.ServiceVisit.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
 
         public void Save()

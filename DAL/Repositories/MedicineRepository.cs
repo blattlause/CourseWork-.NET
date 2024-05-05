@@ -12,39 +12,34 @@ namespace DAL.Repositories
     public class MedicineRepository: IMedicineRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<Medicine> table = null;
 
-
-        public MedicineRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<Medicine>();
-        }
         public MedicineRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<Medicine>();
+            DataBase.Medicine = db.Set<Medicine>();
         }
 
         public void Add(Medicine entity)
         {
-            table.Add(entity);
+            DataBase.Medicine.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            Medicine existing = table.Find(id);
-            table.Remove(existing);
+            Medicine existing = DataBase.Medicine.Find(id);
+            DataBase.Medicine.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public Medicine GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.Medicine.Find(id);
         }
 
         public IList<Medicine> GetAll()
         {
-            return table.ToList();
+            return DataBase.Medicine.ToList();
         }
 
         public void SaveAll(IEnumerable<Medicine> updatalist)
@@ -54,8 +49,9 @@ namespace DAL.Repositories
 
         public void Update(Medicine entity)
         {
-            table.Attach(entity);
+            DataBase.Medicine.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
 
         public void Save()

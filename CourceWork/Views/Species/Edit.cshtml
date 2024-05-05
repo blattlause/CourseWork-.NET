@@ -1,0 +1,28 @@
+﻿@model SpeciesViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h4 class="mb-3">Edit spesies</h4>
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="form-floating mb-3">
+                    <input asp-for="Title" class="form-control" placeholder="" />
+                    <label asp-for="Title" class="control-label"></label>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <hr />
+                <div class="form-floating mb-3">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <a asp-action="Index" class="btn btn-primary">List of species</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -12,39 +12,34 @@ namespace DAL.Repositories
     public class MedicineCardRepository: IMedicineCardRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<MedicineCard> table = null;
 
-
-        public MedicineCardRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<MedicineCard>();
-        }
         public MedicineCardRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<MedicineCard>();
+            DataBase.MedicineCard = db.Set<MedicineCard>();
         }
 
         public void Add(MedicineCard entity)
         {
-            table.Add(entity);
+            DataBase.MedicineCard.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            MedicineCard existing = table.Find(id);
-            table.Remove(existing);
+            MedicineCard existing = DataBase.MedicineCard.Find(id);
+            DataBase.MedicineCard.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public MedicineCard GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.MedicineCard.Find(id);
         }
 
         public IList<MedicineCard> GetAll()
         {
-            return table.ToList();
+            return DataBase.MedicineCard.ToList();
         }
 
         public void SaveAll(IEnumerable<MedicineCard> updatalist)
@@ -54,8 +49,9 @@ namespace DAL.Repositories
 
         public void Update(MedicineCard entity)
         {
-            table.Attach(entity);
+            DataBase.MedicineCard.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
 
         public void Save()

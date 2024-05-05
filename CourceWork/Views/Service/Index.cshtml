@@ -1,0 +1,26 @@
+﻿@model IList<ServiceViewModel>
+
+<h2>List of Services</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model)
+        {
+            <tr>
+                <td>@service.Title</td>
+                <td>@service.Price</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@service.Id">Edit</a> 
+                    <a asp-action="Delete" asp-route-id="@service.Id">Delete</a>
+                </td>
+            </tr>
+        
+        }
+    </tbody>
+</table>

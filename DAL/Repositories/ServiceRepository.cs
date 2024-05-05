@@ -12,39 +12,33 @@ namespace DAL.Repositories
     public class ServiceRepository: IServiceRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<Service> table = null;
-
-
-        public ServiceRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<Service>();
-        }
+        
         public ServiceRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<Service>();
         }
 
         public void Add(Service entity)
         {
-            table.Add(entity);
+            DataBase.Service.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            Service existing = table.Find(id);
-            table.Remove(existing);
+            Service existing = DataBase.Service.Find(id);
+            DataBase.Service.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public Service GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.Service.Find(id);
         }
 
         public IList<Service> GetAll()
         {
-            return table.ToList();
+            return DataBase.Service.ToList();
         }
 
         public void SaveAll(IEnumerable<Service> updatalist)
@@ -54,8 +48,9 @@ namespace DAL.Repositories
 
         public void Update(Service entity)
         {
-            table.Attach(entity);
+            DataBase.Service.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
 
         public void Save()

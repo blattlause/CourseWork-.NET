@@ -12,38 +12,34 @@ namespace DAL.Repositories
     public class VetRepository: IVetRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<Vet> table = null;
 
-        public VetRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<Vet>();
-        }
         public VetRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<Vet>();
+            DataBase.Vet = db.Set<Vet>();
         }
 
         public void Add(Vet entity)
         {
-            table.Add(entity);
+            DataBase.Vet.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            Vet existing = table.Find(id);
-            table.Remove(existing);
+            Vet existing = DataBase.Vet.Find(id);
+            DataBase.Vet.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public Vet GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.Vet.Find(id);
         }
 
         public IList<Vet> GetAll()
         {
-            return table.ToList();
+            return DataBase.Vet.ToList();
         }
 
         public void SaveAll(IEnumerable<Vet> updatalist)
@@ -53,8 +49,9 @@ namespace DAL.Repositories
 
         public void Update(Vet entity)
         {
-            table.Attach(entity);
+            DataBase.Vet.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
 
         public void Save()

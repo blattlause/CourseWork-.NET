@@ -14,3 +14,4 @@ D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.dll
 D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\refint\BLL.dll
 D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.pdb
 D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\ref\BLL.dll
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\BLL\obj\Debug\net8.0\BLL.sourcelink.json

@@ -8,6 +8,18 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
+         <a id="manage" class="nav-link text-dark" asp-controller="Vet" asp-action="Index">Vet</a>
+    </li>
+    <li class="nav-item">
+        <a id="manage" class="nav-link text-dark" asp-controller="Service" asp-action="Index">Service</a>
+    </li>
+        <li class="nav-item">
+            <a id="manage" class="nav-link text-dark" asp-controller="Owner" asp-action="Index">Owner</a>
+        </li>
+        <li class="nav-item">
+            <a id="manage" class="nav-link text-dark" asp-controller="Species" asp-action="Index">Species</a>
+        </li>
+    <li class="nav-item">
         <a id="manage" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
     </li>
     <li class="nav-item">

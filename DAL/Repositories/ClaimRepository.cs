@@ -13,39 +13,34 @@ namespace DAL.Repositories
     public class ClaimRepository: IClaimRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<Models.Claim> table = null;
 
-
-        public ClaimRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<Models.Claim>();
-        }
         public ClaimRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<Models.Claim>();
+            DataBase.Claim = db.Set<Models.Claim>();
         }
 
         public void Add(Models.Claim entity)
         {
-            table.Add(entity);
+            DataBase.Claim.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            Models.Claim existing = table.Find(id);
-            table.Remove(existing);
+            Models.Claim existing = DataBase.Claim.Find(id);
+            DataBase.Claim.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public Models.Claim GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.Claim.Find(id);
         }
 
         public IList<Models.Claim> GetAll()
         {
-            return table.ToList();
+            return DataBase.Claim.ToList();
         }
 
         public void SaveAll(IEnumerable<Models.Claim> updatalist)
@@ -55,8 +50,9 @@ namespace DAL.Repositories
 
         public void Update(Models.Claim entity)
         {
-            table.Attach(entity);
+            DataBase.Claim.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
 
         public void Save()

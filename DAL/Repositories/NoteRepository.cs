@@ -12,39 +12,34 @@ namespace DAL.Repositories
     public class NoteRepository: INoteRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<Note> table = null;
 
-
-        public NoteRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<Note>();
-        }
         public NoteRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<Note>();
+            DataBase.Note = db.Set<Note>();
         }
 
         public void Add(Note entity)
         {
-            table.Add(entity);
+            DataBase.Note.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            Note existing = table.Find(id);
-            table.Remove(existing);
+            Note existing = DataBase.Note.Find(id);
+            DataBase.Note.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public Note GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.Note.Find(id);
         }
 
         public IList<Note> GetAll()
         {
-            return table.ToList();
+            return DataBase.Note.ToList();
         }
 
         public void SaveAll(IEnumerable<Note> updatalist)
@@ -54,8 +49,9 @@ namespace DAL.Repositories
 
         public void Update(Note entity)
         {
-            table.Attach(entity);
+            DataBase.Note.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
 
         public void Save()

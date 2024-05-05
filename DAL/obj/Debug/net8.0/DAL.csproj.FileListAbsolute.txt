@@ -13,3 +13,4 @@ D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.pdb
 D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.genruntimeconfig.cache
 D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\ref\DAL.dll
 D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\bin\Debug\net8.0\DAL.dll.config
+D:\3_year_2_sem\Курсрач ИГИ\CourceWork\DAL\obj\Debug\net8.0\DAL.sourcelink.json

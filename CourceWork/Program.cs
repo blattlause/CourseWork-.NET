@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using CourceWork;
 using CourceWork.Areas.Data;
+using CourceWork.DependencyInjection;
 
 namespace CourceWork
 {
@@ -13,16 +14,16 @@ namespace CourceWork
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.ConfigureApp(connectionString);
 
             // Add services to the container.
             builder.Services.AddDbContext<ApplicationDbContextUI>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
-            
+                options.UseSqlServer(connectionString));
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContextUI>(); 

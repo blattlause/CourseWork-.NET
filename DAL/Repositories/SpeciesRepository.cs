@@ -12,39 +12,33 @@ namespace DAL.Repositories
     public class SpeciesRepository: ISpeciesRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<Species> table = null;
-
-
-        public SpeciesRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<Species>();
-        }
+        
         public SpeciesRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<Species>();
         }
 
         public void Add(Species entity)
         {
-            table.Add(entity);
+            DataBase.Species.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            Species existing = table.Find(id);
-            table.Remove(existing);
+            Species existing = DataBase.Species.Find(id);
+            DataBase.Species.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public Species GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.Species.Find(id);
         }
 
         public IList<Species> GetAll()
         {
-            return table.ToList();
+            return DataBase.Species.ToList();
         }
 
         public void SaveAll(IEnumerable<Species> updatalist)
@@ -54,8 +48,8 @@ namespace DAL.Repositories
 
         public void Update(Species entity)
         {
-            table.Attach(entity);
-            DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.Species.Update(entity);
+            DataBase.SaveChanges();
         }
 
         public void Save()

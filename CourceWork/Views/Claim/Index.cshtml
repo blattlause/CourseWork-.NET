@@ -1,0 +1,25 @@
+﻿@model IList<ClaimViewModel>
+
+<h2>List of Claims</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.Title</td>
+                <td>@claim.Description</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@claim.Id">Edit</a> 
+                    <a asp-action="Delete" asp-route-id="@claim.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

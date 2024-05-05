@@ -1,0 +1,24 @@
+﻿@model IList<SpeciesViewModel>
+
+<h2>List of Species</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var species in Model)
+        {
+            <tr>
+                <td>@species.Title</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@species.Id">Edit</a> 
+                    <a asp-action="Delete" asp-route-id="@species.Id">Delete</a>
+                </td>
+            </tr>
+        
+        }
+    </tbody>
+</table>

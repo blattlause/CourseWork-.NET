@@ -12,39 +12,34 @@ namespace DAL.Repositories
     public class OwnerRepository: IOwnerRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<Owner> table = null;
 
-
-        public OwnerRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<Owner>();
-        }
         public OwnerRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<Owner>();
+            DataBase.Owner = db.Set<Owner>();
         }
 
         public void Add(Owner entity)
         {
-            table.Add(entity);
+            DataBase.Owner.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            Owner existing = table.Find(id);
-            table.Remove(existing);
+            Owner existing = DataBase.Owner.Find(id);
+            DataBase.Owner.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public Owner GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.Owner.Find(id);
         }
 
         public IList<Owner> GetAll()
         {
-            return table.ToList();
+            return DataBase.Owner.ToList();
         }
 
         public void SaveAll(IEnumerable<Owner> updatalist)
@@ -54,8 +49,9 @@ namespace DAL.Repositories
 
         public void Update(Owner entity)
         {
-            table.Attach(entity);
+            DataBase.Owner.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
 
         public void Save()

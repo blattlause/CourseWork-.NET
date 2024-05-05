@@ -12,38 +12,34 @@ namespace DAL.Repositories
     public class VisitRepository: IVisitRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<Visit> table = null;
 
-        public VisitRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<Visit>();
-        }
         public VisitRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<Visit>();
+            DataBase.Visit = db.Set<Visit>();
         }
 
         public void Add(Visit entity)
         {
-            table.Add(entity);
+            DataBase.Visit.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            Visit existing = table.Find(id);
-            table.Remove(existing);
+            Visit existing = DataBase.Visit.Find(id);
+            DataBase.Visit.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public Visit GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.Visit.Find(id);
         }
 
         public IList<Visit> GetAll()
         {
-            return table.ToList();
+            return DataBase.Visit.ToList();
         }
 
         public void SaveAll(IEnumerable<Visit> updatalist)
@@ -53,8 +49,9 @@ namespace DAL.Repositories
 
         public void Update(Visit entity)
         {
-            table.Attach(entity);
+            DataBase.Visit.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
         public void Save()
         {

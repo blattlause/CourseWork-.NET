@@ -13,19 +13,19 @@ namespace BLL.Mappers
     {
         public MappingProfile()
         {
-            CreateMap<Claim, ClaimDTO>();
-            CreateMap<Diagnosis, DiagnosisDTO>();
-            CreateMap<MedicineCard, MedicineCardDTO>();
-            CreateMap<Medicine, MedicineDTO>();
-            CreateMap<Note, NoteDTO>();
-            CreateMap<Owner, OwnerDTO>();
-            CreateMap<Pet, PetDTO>();
-            CreateMap<Reception, ReceptionDTO>();
-            CreateMap<Service, ServiceDTO>();
-            CreateMap<ServiceVisit, ServiceVisitDTO>();
-            CreateMap<Species, SpeciesDTO>();
-            CreateMap<Vet, VetDTO>();
-            CreateMap<Visit, VisitDTO>();
+            CreateMap<Claim, ClaimDTO>().ReverseMap();
+            CreateMap<Diagnosis, DiagnosisDTO>().ReverseMap();
+            CreateMap<MedicineCard, MedicineCardDTO>().ReverseMap();
+            CreateMap<Medicine, MedicineDTO>().ReverseMap();
+            CreateMap<Note, NoteDTO>().ReverseMap();
+            CreateMap<Owner, OwnerDTO>().ReverseMap();
+            CreateMap<Pet, PetDTO>().ReverseMap();
+            CreateMap<Reception, ReceptionDTO>().ReverseMap();
+            CreateMap<Service, ServiceDTO>().ReverseMap();
+            CreateMap<ServiceVisit, ServiceVisitDTO>().ReverseMap();
+            CreateMap<Species, SpeciesDTO>().ReverseMap();
+            CreateMap<Vet, VetDTO>().ReverseMap();
+            CreateMap<Visit, VisitDTO>().ReverseMap();
         }
     }
 }

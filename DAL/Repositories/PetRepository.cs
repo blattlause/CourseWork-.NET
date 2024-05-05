@@ -12,39 +12,34 @@ namespace DAL.Repositories
     public class PetRepository: IPetRepository
     {
         private ApplicationDBContext DataBase { get; set; }
-        private DbSet<Pet> table = null;
 
-
-        public PetRepository()
-        {
-            this.DataBase = new ApplicationDBContext();
-            table = DataBase.Set<Pet>();
-        }
         public PetRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            table = db.Set<Pet>();
+            DataBase.Pet = db.Set<Pet>();
         }
 
         public void Add(Pet entity)
         {
-            table.Add(entity);
+            DataBase.Pet.Add(entity);
+            DataBase.SaveChanges();
         }
 
         public void Remove(int id)
         {
-            Pet existing = table.Find(id);
-            table.Remove(existing);
+            Pet existing = DataBase.Pet.Find(id);
+            DataBase.Pet.Remove(existing);
+            DataBase.SaveChanges();
         }
 
         public Pet GetById(int id)
         {
-            return table.Find(id);
+            return DataBase.Pet.Find(id);
         }
 
         public IList<Pet> GetAll()
         {
-            return table.ToList();
+            return DataBase.Pet.ToList();
         }
 
         public void SaveAll(IEnumerable<Pet> updatalist)
@@ -54,8 +49,9 @@ namespace DAL.Repositories
 
         public void Update(Pet entity)
         {
-            table.Attach(entity);
+            DataBase.Pet.Attach(entity);
             DataBase.Entry(entity).State = EntityState.Modified;
+            DataBase.SaveChanges();
         }
 
         public void Save()

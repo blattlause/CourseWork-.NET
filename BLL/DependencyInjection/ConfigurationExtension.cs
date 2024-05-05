@@ -21,6 +21,8 @@ namespace BLL.DependencyInjection
         {
             services.ConfigureDAL(connection);
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddAutoMapper(typeof(ConfigurationExtension), typeof(MappingProfile));
+
 
             //services.AddTransient<IService<IDTO>, BaseService<IDTO, IEntity>>();
 

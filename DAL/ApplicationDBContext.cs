@@ -20,7 +20,7 @@ namespace DAL
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options)
             : base(options)
         {
-
+            this.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         public ApplicationDBContext()
@@ -28,7 +28,6 @@ namespace DAL
            
         }
         
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
@@ -47,6 +46,7 @@ namespace DAL
         public DbSet<Service> Service { get; set; }
         public DbSet<ServiceVisit> ServiceVisit { get; set; }
         public DbSet<Species> Species { get; set; }
+        public DbSet<Visit> Visit { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

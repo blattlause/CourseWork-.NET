@@ -1,0 +1,27 @@
+﻿@model IList<OwnerViewModel>
+
+<h2>List of Owners</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Adress</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var owner in Model)
+        {
+            <tr>
+                <td>@owner.Name</td>
+                <td>@owner.Adress</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@owner.Id">Edit</a> 
+                    <a asp-action="Delete" asp-route-id="@owner.Id">Delete</a>
+                </td>
+            </tr>
+        
+        }
+    </tbody>
+</table>
