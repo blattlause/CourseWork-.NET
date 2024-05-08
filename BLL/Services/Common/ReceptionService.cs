@@ -3,15 +3,10 @@ using BLL.DTO;
 using BLL.Services.Interfaces;
 using DAL.Intefaces;
 using DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Receptions.Common
 {
-    public class ReceptionReception: IReceptionService
+    internal class ReceptionReception: IReceptionService
     {
         private readonly IReceptionRepository repository;
         private readonly IMapper mapper;

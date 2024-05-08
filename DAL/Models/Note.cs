@@ -15,8 +15,9 @@ namespace DAL.Models
         private int idVet;
         private int idMedicine;
         private int idMedicineCard;
+        private int idVisit;
 
-        public Note(int id, DateTime date, int idDiagnosis, int idClaim, int idVet, int idMedicine, int idMedicineCard)
+        public Note(int id, DateTime date, int idDiagnosis, int idClaim, int idVet, int idMedicine, int idMedicineCard, int idVisit)
         {
             this.id = id;
             this.date = date;
@@ -25,6 +26,7 @@ namespace DAL.Models
             this.idVet = idVet;
             this.idMedicine = idMedicine;
             this.idMedicineCard = idMedicineCard;
+            this.idVisit = idVisit;
         }
 
         public int Id { get => id; set => id = value; }
@@ -33,6 +35,7 @@ namespace DAL.Models
         public int IdClaim { get => idClaim; set => idClaim = value; }
         public int IdVet { get => idVet; set => idVet = value; }
         public int IdMedicine { get => idMedicine; set => idMedicine = value; }
+        public int IdVisit { get => idVisit; set => idVisit = value; }
 
         public int IdMedicineCard { get => idMedicineCard; set => idMedicineCard = value; }
 
@@ -41,5 +44,6 @@ namespace DAL.Models
         public virtual Claim Claim { get; set; }
         public virtual Vet Vet { get; set; }
         public virtual Medicine Medicine { get; set; }
+        public virtual Visit Visit { get; set; }
     }
 }

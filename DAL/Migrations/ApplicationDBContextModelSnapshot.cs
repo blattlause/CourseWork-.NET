@@ -17,7 +17,7 @@ namespace DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -128,6 +128,9 @@ namespace DAL.Migrations
                     b.Property<int>("IdVet")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdVisit")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdClaim");
@@ -139,6 +142,8 @@ namespace DAL.Migrations
                     b.HasIndex("IdMedicineCard");
 
                     b.HasIndex("IdVet");
+
+                    b.HasIndex("IdVisit");
 
                     b.ToTable("Note");
                 });
@@ -372,6 +377,12 @@ namespace DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DAL.Models.Visit", "Visit")
+                        .WithMany("Notes")
+                        .HasForeignKey("IdVisit")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Claim");
 
                     b.Navigation("Diagnosis");
@@ -381,6 +392,8 @@ namespace DAL.Migrations
                     b.Navigation("MedicineCard");
 
                     b.Navigation("Vet");
+
+                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("DAL.Models.Pet", b =>
@@ -514,6 +527,8 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Models.Visit", b =>
                 {
+                    b.Navigation("Notes");
+
                     b.Navigation("ServiceVisities");
                 });
 #pragma warning restore 612, 618

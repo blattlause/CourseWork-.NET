@@ -3,17 +3,11 @@ using BLL.DTO;
 using BLL.Services.Interfaces;
 using DAL.Intefaces;
 using DAL.Models;
-using DAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BLL.DTO;
+
 
 namespace BLL.Services.Common
 {
-    public class ClaimService : IClaimService
+    internal class ClaimService : IClaimService
     {
         private readonly IClaimRepository repository;
         private readonly IMapper mapper;

@@ -1,22 +1,17 @@
 ﻿using DAL.Intefaces;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DAL.Repositories
 {
-    public class VisitRepository: IVisitRepository
+    internal class VisitRepository: IVisitRepository
     {
         private ApplicationDBContext DataBase { get; set; }
 
         public VisitRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            DataBase.Visit = db.Set<Visit>();
         }
 
         public void Add(Visit entity)

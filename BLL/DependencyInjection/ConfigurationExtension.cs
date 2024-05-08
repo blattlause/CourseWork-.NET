@@ -1,17 +1,10 @@
-﻿using BLL.DTO;
-using BLL.Mappers;
+﻿using BLL.Mappers;
 using BLL.Receptions.Common;
 using BLL.Services.Common;
 using BLL.Services.Interfaces;
 using DAL;
-using DAL.Models;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BLL.DependencyInjection
 {

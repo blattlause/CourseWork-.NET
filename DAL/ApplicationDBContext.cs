@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using DAL.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Protocols;
-using System.Configuration;
-
 
 namespace DAL
 {
@@ -31,7 +19,7 @@ namespace DAL
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-VDH8U16;Initial Catalog=VetVetClinic;Integrated Security=True; TrustServerCertificate=true"); 
+             
         }
 
         public DbSet<Pet> Pet { get; set; }
@@ -77,6 +65,12 @@ namespace DAL
                 .HasOne(n => n.MedicineCard)
                 .WithMany(d => d.Notes)
                 .HasForeignKey(n => n.IdMedicineCard);
+
+            modelBuilder.Entity<Note>()
+                .HasOne(n => n.Visit)
+                .WithMany(d => d.Notes)
+                .HasForeignKey(n => n.IdVisit)
+                .OnDelete(DeleteBehavior.Restrict);
 
             //Pet
             modelBuilder.Entity<Pet>()

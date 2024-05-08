@@ -16,5 +16,6 @@ namespace BLL.DTO
         public int IdVet { get; set; }
         public int IdMedicine { get; set; }
         public int IdMedicineCard { get; set; }
+        public int IdVisit { get; set; }
     }
 }

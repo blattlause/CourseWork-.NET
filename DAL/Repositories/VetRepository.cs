@@ -1,22 +1,17 @@
 ﻿using DAL.Intefaces;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DAL.Repositories
 {
-    public class VetRepository: IVetRepository
+    internal class VetRepository: IVetRepository
     {
         private ApplicationDBContext DataBase { get; set; }
 
         public VetRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            DataBase.Vet = db.Set<Vet>();
         }
 
         public void Add(Vet entity)

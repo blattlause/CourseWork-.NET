@@ -1,22 +1,17 @@
 ﻿using DAL.Intefaces;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DAL.Repositories
 {
-    public class MedicineRepository: IMedicineRepository
+    internal class MedicineRepository: IMedicineRepository
     {
         private ApplicationDBContext DataBase { get; set; }
 
         public MedicineRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            DataBase.Medicine = db.Set<Medicine>();
         }
 
         public void Add(Medicine entity)

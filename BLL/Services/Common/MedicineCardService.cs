@@ -3,15 +3,11 @@ using BLL.DTO;
 using BLL.Services.Interfaces;
 using DAL.Intefaces;
 using DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BLL.Services.Common
 {
-    public class MedicineCardService : IMedicineCardService
+    internal class MedicineCardService : IMedicineCardService
     {
         private readonly IMedicineCardRepository repository;
         private readonly IMapper mapper;
@@ -39,7 +35,7 @@ namespace BLL.Services.Common
             return mapper.Map<MedicineCardDTO>(medicineCard);
         }
 
-        public IEnumerable<MedicineCardDTO> GetMedicineCardForPet(int petId)
+        public MedicineCardDTO GetMedicineCardForPet(int petId)
         {
             throw new NotImplementedException();
         }

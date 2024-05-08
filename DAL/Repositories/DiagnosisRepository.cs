@@ -4,20 +4,16 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class DiagnosisRepository: IDiagnosisRepository
+    internal class DiagnosisRepository: IDiagnosisRepository
     {
         private ApplicationDBContext DataBase { get; set; }
 
         public DiagnosisRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            DataBase.Diagnosis = db.Set<Diagnosis>();
         }
 
         public void Add(Diagnosis entity)

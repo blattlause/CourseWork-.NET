@@ -28,6 +28,7 @@ namespace DAL.Models
         public virtual Pet Pet { get; set; }
         public virtual Vet Vet { get; set; }
         public virtual ICollection<ServiceVisit> ServiceVisities { get; set; }
-        
+        public virtual ICollection<Note> Notes { get; set; }
+
     }
 }

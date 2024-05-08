@@ -1,22 +1,17 @@
 ﻿using DAL.Intefaces;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DAL.Repositories
 {
-    public class NoteRepository: INoteRepository
+    internal class NoteRepository: INoteRepository
     {
         private ApplicationDBContext DataBase { get; set; }
 
         public NoteRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            DataBase.Note = db.Set<Note>();
         }
 
         public void Add(Note entity)

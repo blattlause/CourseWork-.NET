@@ -3,15 +3,10 @@ using BLL.DTO;
 using BLL.Services.Interfaces;
 using DAL.Intefaces;
 using DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL.Services.Common
 {
-    public class SpeciesService: ISpeciesService
+    internal class SpeciesService: ISpeciesService
     {
         private readonly ISpeciesRepository repository;
         private readonly IMapper mapper;

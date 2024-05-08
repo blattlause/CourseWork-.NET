@@ -1,22 +1,17 @@
 ﻿using DAL.Intefaces;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DAL.Repositories
 {
-    public class OwnerRepository: IOwnerRepository
+    internal class OwnerRepository: IOwnerRepository
     {
         private ApplicationDBContext DataBase { get; set; }
 
         public OwnerRepository(ApplicationDBContext db)
         {
             this.DataBase = db;
-            DataBase.Owner = db.Set<Owner>();
         }
 
         public void Add(Owner entity)
