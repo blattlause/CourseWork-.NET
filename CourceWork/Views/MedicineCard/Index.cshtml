@@ -1,0 +1,25 @@
+﻿@model IList<MedicineCardViewModel>
+
+<h2>List of MedicineCards</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Pet Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var medicineCard in Model)
+        {
+            <tr>
+                <td>@medicineCard.Id</td>
+                <td>@medicineCard.Pet.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@medicineCard.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@medicineCard.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

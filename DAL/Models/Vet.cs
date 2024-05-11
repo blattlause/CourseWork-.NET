@@ -10,13 +10,15 @@ namespace DAL.Models
     {
         private int id;
         private string name;
-        private decimal sallary;
+        private decimal? sallary;
+        private string? idUser;
 
-        public Vet(int id, string name, decimal sallary) 
+        public Vet(int id, string name, decimal sallary, string idUser) 
         {
             this.id = id;
             this.name = name;
             this.sallary = sallary;
+            this.idUser = idUser;
         }
 
         public Vet()
@@ -26,7 +28,8 @@ namespace DAL.Models
 
         public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
-        public decimal Sallary { get => sallary; set => sallary = value; }
+        public decimal? Sallary { get => sallary; set => sallary = value; }
+        public string? IdUser { get => idUser; set => idUser = value; }
 
         public virtual ICollection<Note> Notes { get; set; }
         public virtual ICollection<Visit> Visities { get; set; }

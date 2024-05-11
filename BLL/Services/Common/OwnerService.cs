@@ -21,6 +21,7 @@ namespace BLL.Services.Common
         {
             Owner owner = mapper.Map<Owner>(entity);
             repository.Add(owner);
+            entity.Id = owner.Id;
         }
 
         public IList<OwnerDTO> GetAll()
@@ -45,6 +46,7 @@ namespace BLL.Services.Common
         {
             Owner owner = mapper.Map<Owner>(entity);
             repository.Update(owner);
+            entity.Id = owner.Id;
         }
     }
 }

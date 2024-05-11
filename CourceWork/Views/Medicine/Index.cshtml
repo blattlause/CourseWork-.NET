@@ -1,0 +1,27 @@
+﻿@model IList<MedicineViewModel>
+
+<h2>List of Medicines</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var medicine in Model)
+        {
+            <tr>
+                <td>@medicine.Title</td>
+                <td>@medicine.Description</td>
+                <td>@medicine.Price</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@medicine.Id">Edit</a> 
+                    <a asp-action="Delete" asp-route-id="@medicine.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

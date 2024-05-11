@@ -1,6 +1,7 @@
 ﻿using BLL.DTO;
 using BLL.Services.Interfaces;
 using CourceWork.Models;
+using DAL.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +21,7 @@ namespace CourceWork.Controllers
         public IActionResult Index()
         {
             var vetesDTO = _vetService.GetAll();
-            var vetesViewModel = vetesDTO.Select(dto => new VetViewModel { Id = dto.Id, Name = dto.Name, Sallary = dto.Sallary }).ToList();
+            var vetesViewModel = vetesDTO.Select(dto => new VetViewModel { Id = dto.Id, Name = dto.Name, Sallary = dto.Sallary, IdUser = dto.IdUser }).ToList();
             return View(vetesViewModel);
         }
 
@@ -41,6 +42,7 @@ namespace CourceWork.Controllers
                 {
                     Name = model.Name,
                     Sallary = model.Sallary,
+                    IdUser = model.IdUser
 
                 };
 
@@ -70,6 +72,7 @@ namespace CourceWork.Controllers
                 Id = vetDTO.Id,
                 Name = vetDTO.Name,
                 Sallary = vetDTO.Sallary,
+                IdUser = vetDTO.IdUser
             };
 
             return View(vetViewModel);
@@ -77,8 +80,9 @@ namespace CourceWork.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Name, Sallary")] VetViewModel vet)
+        public IActionResult Edit(int id, [Bind("Id,Name, Sallary, IdUser")] VetViewModel vet)
         {
+
             if (id != vet.Id)
             {
                 return NotFound();
@@ -86,11 +90,13 @@ namespace CourceWork.Controllers
 
             if (ModelState.IsValid)
             {
+                var old_vet = _vetService.GetById(vet.Id);
                 var vetDTO = new VetDTO
                 {
                     Id = vet.Id,
                     Name = vet.Name,
                     Sallary = vet.Sallary,
+                    IdUser = old_vet.IdUser
                 };
                 _vetService.Update(vetDTO);
                 return RedirectToAction(nameof(Index));
@@ -114,6 +120,7 @@ namespace CourceWork.Controllers
                 Id = vetDTO.Id,
                 Name = vetDTO.Name,
                 Sallary = vetDTO.Sallary,
+                IdUser = vetDTO.IdUser
             };
             return View(vetViewModel);
         }

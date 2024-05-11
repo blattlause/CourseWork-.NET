@@ -1,6 +1,7 @@
 ﻿using BLL.DTO;
 using BLL.Services.Interfaces;
 using CourceWork.Models;
+using DAL.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +21,7 @@ namespace CourceWork.Controllers
         public IActionResult Index()
         {
             var owneresDTO = _ownerService.GetAll();
-            var owneresViewModel = owneresDTO.Select(dto => new OwnerViewModel { Id = dto.Id, Name = dto.Name, Adress = dto.Adress }).ToList();
+            var owneresViewModel = owneresDTO.Select(dto => new OwnerViewModel { Id = dto.Id, Name = dto.Name, Adress = dto.Adress, IdUser = dto.IdUser }).ToList();
             return View(owneresViewModel);
         }
 
@@ -41,6 +42,7 @@ namespace CourceWork.Controllers
                 {
                     Name = model.Name,
                     Adress = model.Adress,
+                    IdUser = model.IdUser,
                 };
 
                 _ownerService.Add(ownerDTO);
@@ -69,6 +71,7 @@ namespace CourceWork.Controllers
                 Id = ownerDTO.Id,
                 Name = ownerDTO.Name,
                 Adress = ownerDTO.Adress,
+                IdUser = ownerDTO.IdUser,
             };
 
             return View(ownerViewModel);
@@ -76,7 +79,7 @@ namespace CourceWork.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Name, Adress")] OwnerViewModel owner)
+        public IActionResult Edit(int id, [Bind("Id,Name, Adress, IdUser")] OwnerViewModel owner)
         {
             if (id != owner.Id)
             {
@@ -85,11 +88,13 @@ namespace CourceWork.Controllers
 
             if (ModelState.IsValid)
             {
+                var old_owner = _ownerService.GetById(owner.Id);
                 var ownerDTO = new OwnerDTO
                 {
                     Id = owner.Id,
                     Name = owner.Name,
                     Adress = owner.Adress,
+                    IdUser = old_owner.IdUser,
                 };
                 _ownerService.Update(ownerDTO);
                 return RedirectToAction(nameof(Index));
@@ -112,6 +117,8 @@ namespace CourceWork.Controllers
             {
                 Id = ownerDTO.Id,
                 Name = ownerDTO.Name,
+                Adress = ownerDTO.Adress,
+                IdUser = ownerDTO.IdUser,
             };
             return View(ownerViewModel);
         }

@@ -10,14 +10,20 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using BLL.DTO;
+using BLL.Services.Interfaces;
 using CourceWork.Areas.Data;
+using DAL.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace CourceWork.Areas.Identity.Pages.Account
@@ -30,13 +36,17 @@ namespace CourceWork.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IOwnerService _ownerService;
+        private readonly IVetService _vetService;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+        IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager, IOwnerService ownerService, IVetService vetService )
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +54,9 @@ namespace CourceWork.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
+            _ownerService = ownerService;
+            _vetService = vetService;
         }
 
         /// <summary>
@@ -109,6 +122,12 @@ namespace CourceWork.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            public string Role { get; set; }
+
+            [ValidateNever]
+            public IEnumerable<SelectListItem> RoleList { get; set; }
         }
 
 
@@ -120,6 +139,16 @@ namespace CourceWork.Areas.Identity.Pages.Account
             }
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            Input = new InputModel()
+            {
+                RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem
+                {
+
+                    Text = i,
+                    Value = i
+                })
+            };
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -136,11 +165,14 @@ namespace CourceWork.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, Input.Role);
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -151,17 +183,36 @@ namespace CourceWork.Areas.Identity.Pages.Account
                         values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    if (Input.Role == "Vet Doctor")
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        if (ModelState.IsValid)
+                        {
+                            var vetDTO = new VetDTO
+                            {
+                                IdUser = userId,
+                                Name = Input.FirstName + " " + Input.LastName,
+                            };
+
+                            _vetService.Add(vetDTO);
+                            return Redirect("/Vet/Edit/" + vetDTO.Id);
+                        }
                     }
-                    else
+                    else if (Input.Role == "Pet Owner")
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        if (ModelState.IsValid)
+                        {
+                            var ownerDTO = new OwnerDTO
+                            {
+                                IdUser = userId,
+                                Name = Input.FirstName + " " + Input.LastName,
+                            };
+
+                            _ownerService.Add(ownerDTO);
+                            return Redirect("/Owner/Edit/" + ownerDTO.Id);
+                        }
                     }
                 }
                 foreach (var error in result.Errors)

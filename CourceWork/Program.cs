@@ -25,7 +25,8 @@ namespace CourceWork
             builder.Services.AddDbContext<ApplicationDbContextUI>(options =>
                 options.UseSqlServer(connectionString));
 
-            builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            builder.Services.AddDefaultIdentity<ApplicationUser>().AddDefaultTokenProviders()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContextUI>(); 
 
             builder.Services.AddRazorPages();

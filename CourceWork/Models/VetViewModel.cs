@@ -6,6 +6,7 @@ namespace CourceWork.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Sallary { get; set; }
+        public decimal? Sallary { get; set; }
+        public string? IdUser { get; set; }
     }
 }

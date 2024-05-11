@@ -22,6 +22,7 @@ namespace BLL.Services.Common
         {
             Vet vet = mapper.Map<Vet>(entity);
             repository.Add(vet);
+            entity.Id = vet.Id;
         }
 
         public IList<VetDTO> GetAll()
@@ -46,6 +47,7 @@ namespace BLL.Services.Common
         {
             Vet vet = mapper.Map<Vet>(entity);
             repository.Update(vet);
+            entity.Id = vet.Id;
         }
     }
 }

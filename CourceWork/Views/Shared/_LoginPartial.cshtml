@@ -8,6 +8,12 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
+        <a id="manage" class="nav-link text-dark" asp-controller="MedicineCard" asp-action="Index">Medicine Card</a>
+    </li>
+    <li class="nav-item">
+        <a id="manage" class="nav-link text-dark" asp-controller="AppRoles" asp-action="Index">Roles</a>
+    </li>
+    <li class="nav-item">
          <a id="manage" class="nav-link text-dark" asp-controller="Vet" asp-action="Index">Vet</a>
     </li>
     <li class="nav-item">
