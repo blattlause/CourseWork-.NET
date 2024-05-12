@@ -1,0 +1,27 @@
+﻿@model IList<VisitViewModel>
+
+<h2>List of Visits</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Pet Name</th>
+            <th>Vet Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var visit in Model)
+        {
+            <tr>
+                <td>@visit.Id</td>
+                <td>@visit.Pet.Name</td>
+                <td>@visit.Vet.Name</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@visit.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@visit.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

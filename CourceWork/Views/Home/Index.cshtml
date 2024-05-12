@@ -3,7 +3,17 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>User Id: @ViewData["UserID"]</p>
+    <div class="btn-group-vertical">
+        <a class="btn btn-primary" href="@Url.Action("Index", "MedicineCard")">Medicine Cards</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Owner")">Owners</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Pet")">Pets</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Service")">Services</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Species")">Species</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Vet")">Vets</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Claim")">Claims</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Diagnosis")">Diagnosis</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Medicine")">Medicine</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Visit")">Visits</a>
+        <a class="btn btn-primary" href="@Url.Action("Index", "Note")">Notes</a>
+    </div>
 </div>

@@ -1,0 +1,31 @@
+﻿@model IList<NoteViewModel>
+
+<h2>List of Notes</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Diagnosis</th>
+            <th>Claim</th>
+            <th>Vet</th>
+            <th>Medicine</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var note in Model)
+        {
+            <tr>
+                <td>@note.Date</td>
+                <td>@note.Diagnosis.Title</td>
+                <td>@note.Claim.Title</td>
+                <td>@note.Vet.Name</td>
+                <td>@note.Medicine.Title</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@note.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@note.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+﻿@model CourceWork.Models.VisitViewModel
+
+<h2>Create New Visits</h2>
+
+<form asp-controller="Visit" asp-action="Create" method="post">
+    <div class="form-group">
+        <label class="control-label" for="IdPet">Select Pet</label>
+        <select asp-for="IdPet" class="form-control">
+            @foreach (var option in ViewData["PetOptions"].ToString().Split(","))
+            {
+                var values = option.Split("-");
+                var id = values[0].Trim();
+                var name = values[1].Trim();
+                <option value="@id">@name</option>
+            }
+        </select>
+        <label class="control-label" for="IdVet">Select Vet</label>
+        <select asp-for="IdVet" class="form-control">
+            @foreach (var option in ViewData["VetOptions"].ToString().Split(","))
+            {
+                var values = option.Split("-");
+                var id = values[0].Trim();
+                var name = values[1].Trim();
+                <option value="@id">@name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

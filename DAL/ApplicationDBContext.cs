@@ -119,8 +119,8 @@ namespace DAL
             //MedicineCard
             modelBuilder.Entity<MedicineCard>()
                 .HasOne(n => n.Pet)
-                .WithMany(d => d.MedicineCards)
-                .HasForeignKey(n => n.IdPet);
+                .WithOne(p => p.MedicineCard)
+                .HasForeignKey<Pet>(p => p.Id);
         }
     }
 }

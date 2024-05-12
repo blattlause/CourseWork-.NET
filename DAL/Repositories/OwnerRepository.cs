@@ -29,12 +29,12 @@ namespace DAL.Repositories
 
         public Owner GetById(int id)
         {
-            return DataBase.Owner.Find(id);
+            return DataBase.Owner.Where(x => x.Id == id).Include(x => x.Pets).First();
         }
 
         public IList<Owner> GetAll()
         {
-            return DataBase.Owner.ToList();
+            return DataBase.Owner.Include(x => x.Pets).Include(x => x.Receptions).ToList();
         }
 
         public void SaveAll(IEnumerable<Owner> updatalist)

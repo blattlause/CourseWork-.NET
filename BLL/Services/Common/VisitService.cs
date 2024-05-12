@@ -3,6 +3,7 @@ using BLL.DTO;
 using BLL.Services.Interfaces;
 using DAL.Intefaces;
 using DAL.Models;
+using static Azure.Core.HttpHeader;
 
 
 namespace BLL.Services.Common
@@ -27,7 +28,7 @@ namespace BLL.Services.Common
         public IList<VisitDTO> GetAll()
         {
             IList<Visit> visits = repository.GetAll();
-            return visits.Select(c => mapper.Map<VisitDTO>(c)).ToList();
+            return mapper.Map<IList<VisitDTO>>(visits);
         }
 
         public VisitDTO? GetById(int id)

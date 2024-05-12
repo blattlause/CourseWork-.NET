@@ -44,6 +44,6 @@ namespace DAL.Models
         public virtual Owner Owner { get; set; }
         public virtual Species Species { get; set; }
         public virtual ICollection<Visit> Visities { get; set; }
-        public virtual ICollection<MedicineCard> MedicineCards { get; set; }
+        public virtual MedicineCard MedicineCard { get; set; }
     }
 }

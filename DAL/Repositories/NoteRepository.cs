@@ -34,7 +34,8 @@ namespace DAL.Repositories
 
         public IList<Note> GetAll()
         {
-            return DataBase.Note.ToList();
+            return DataBase.Note.Include(x => x.MedicineCard).ThenInclude(medicineCard => medicineCard.Pet).Include(x => x.Diagnosis)
+                .Include(x => x.Claim).Include(x => x.Vet).Include(x => x.Medicine).Include(x => x.Visit).ThenInclude(visit => visit.Pet).Include(x => x.Visit).ThenInclude(visit => visit.Vet).ToList();
         }
 
         public void SaveAll(IEnumerable<Note> updatalist)

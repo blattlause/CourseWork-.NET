@@ -34,7 +34,8 @@ namespace DAL.Repositories
 
         public IList<Visit> GetAll()
         {
-            return DataBase.Visit.ToList();
+            return DataBase.Visit.Include(x => x.Pet).Include(x => x.Vet).Include(x => x.ServiceVisities)
+                .Include(x => x.Notes).ToList();
         }
 
         public void SaveAll(IEnumerable<Visit> updatalist)

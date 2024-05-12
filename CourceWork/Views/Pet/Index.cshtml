@@ -1,5 +1,33 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IList<PetViewModel>
+
+<h2>List of Pets</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Heigth</th>
+            <th>Weigrh</th>
+            <th>Owner Name</th>
+            <th>Species</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pet in Model)
+        {
+            <tr>
+                <td>@pet.Name</td>
+                <td>@pet.Age</td>
+                <td>@pet.Heigth</td>
+                <td>@pet.Weigth</td>
+                <td>@pet.Owner.Name</td>
+                <td>@pet.Species.Title</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@pet.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@pet.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

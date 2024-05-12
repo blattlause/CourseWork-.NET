@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,10 @@ namespace BLL.DTO
         public int IdSpecies { get; set; }
         public double Weigth { get; set; }
         public double Heigth { get; set; }
+
+        public  OwnerDTO Owner { get; set; }
+        public SpeciesDTO Species { get; set; }
+        public  ICollection<VisitDTO> Visities { get; set; }
+        public  MedicineCardDTO MedicineCards { get; set; }
     }
 }

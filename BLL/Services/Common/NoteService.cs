@@ -26,7 +26,7 @@ namespace BLL.Services.Common
         public IList<NoteDTO> GetAll()
         {
             IList<Note> notes = repository.GetAll();
-            return notes.Select(c => mapper.Map<NoteDTO>(c)).ToList();
+            return mapper.Map<IList<NoteDTO>>(notes);
         }
 
         public NoteDTO? GetById(int id)

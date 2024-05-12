@@ -134,12 +134,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNpbmVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Note/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90ZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Note/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90ZVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Note/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90ZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Note/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Owner/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Owner/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Owner/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3duZXJcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Owner/Edit.cshtml]
@@ -224,6 +244,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Vet/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmV0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Visit/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Visit/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Visit/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/Visit/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmlzaXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/3_year_2_sem/Курсрач ИГИ/CourceWork/CourceWork/Views/_ViewImports.cshtml]

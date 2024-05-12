@@ -1,0 +1,28 @@
+﻿@model CourceWork.Models.VisitViewModel
+
+<h2>Edit Visit</h2>
+
+<form asp-controller="Visit" asp-action="Edit" method="post">
+    <div class="form-floating mb-3">
+        <label asp-for="IdPet" class="control-label"></label>
+        <select asp-for="IdPet" class="form-control">
+            @foreach (var option in ViewData["PetOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label asp-for="IdVet" class="control-label"></label>
+        <select asp-for="IdVet" class="form-control">
+            @foreach (var option in ViewData["VetOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+    </div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>

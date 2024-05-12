@@ -1,5 +1,46 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model CourceWork.Models.PetViewModel
+
+<h2>Create New Pets</h2>
+
+<form asp-controller="Pet" asp-action="Create" method="post">
+    <div class="form-group">
+
+        <label class="control-label" for="Name">Name</label>
+        <input type="text" asp-for="Name" class="form-control" />
+
+        <label class="control-label" for="Age">Age</label>
+        <input type="number" asp-for="Age" class="form-control" />
+
+        <label class="control-label" for="Height">Height</label>
+        <input type="number" asp-for="Heigth" class="form-control" />
+
+        <label class="control-label" for="Weight">Weight</label>
+        <input type="number" asp-for="Weigth" class="form-control" />
+
+        <label class="control-label" for="IdOwner">Select Owner</label>
+        <select asp-for="IdOwner" class="form-control">
+            @foreach (var option in ViewData["OwnerOptions"].ToString().Split(","))
+            {
+                var values = option.Split("-");
+                var id = values[0].Trim();
+                var name = values[1].Trim();
+                <option value="@id">@name</option>
+            }
+        </select>
+
+        <label class="control-label" for="IdSpecies">Select Species</label>
+        <select asp-for="IdSpecies" class="form-control">
+            @foreach (var option in ViewData["SpeciesOptions"].ToString().Split(","))
+            {
+                var values = option.Split("-");
+                var id = values[0].Trim();
+                var name = values[1].Trim();
+                <option value="@id">@name</option>
+            }
+        </select>
+
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>

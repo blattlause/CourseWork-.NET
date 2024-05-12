@@ -26,7 +26,7 @@ namespace BLL.Services.Common
         public IList<MedicineCardDTO> GetAll()
         {
             IList<MedicineCard> medicineCards = repository.GetAll();
-            return medicineCards.Select(c => mapper.Map<MedicineCardDTO>(c)).ToList();
+            return mapper.Map<IList<MedicineCardDTO>>(medicineCards);
         }
 
         public MedicineCardDTO? GetById(int id)

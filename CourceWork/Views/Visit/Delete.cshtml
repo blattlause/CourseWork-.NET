@@ -1,0 +1,22 @@
+﻿@model VisitViewModel
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="container-xxl my-md-4 bd-layout">
+    <main class="bd-main order-1">
+        <div class="bd-intro ps-lg-4">
+            <div class="bd-intro ps-lg-4">
+                <h1 class="bd-title" id="content">Delete card?</h1>
+                <hr />
+                <span>Really?</span>
+                <hr />
+            </div>
+            <div class="bd-content ps-lg-4">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </main>
+</div>

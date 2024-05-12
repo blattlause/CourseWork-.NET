@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,8 @@ namespace BLL.DTO
         public string Name { get; set; }
         public string? Adress { get; set; }
         public string? IdUser { get; set; }
+
+        public  ICollection<PetDTO> Pets { get; set; }
+        public  ICollection<ReceptionDTO> Receptions { get; set; }
     }
 }

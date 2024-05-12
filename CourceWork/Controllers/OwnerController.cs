@@ -135,5 +135,15 @@ namespace CourceWork.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Details(int id)
+        {
+            var dto = _ownerService.GetById(id);
+            var owneresViewModel = new OwnerViewModel { Id = dto.Id, Name = dto.Name, Adress = dto.Adress, IdUser = dto.IdUser, Pets = dto.Pets.Select(x => new PetViewModel { Name = x.Name, 
+            Age = x.Age, Heigth = x.Heigth, Weigth = x.Weigth, IdOwner = x.IdOwner, IdSpecies = x.IdSpecies, Id = x.Id}).ToList() };
+
+            return View(owneresViewModel);
+        }
+
     }
 }

@@ -1,5 +1,53 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model CourceWork.Models.PetViewModel
+
+<h2>Edit Pet</h2>
+
+<form asp-controller="Pet" asp-action="Edit" method="post">
+    <div class="form-floating mb-3">
+
+        <div class="form-floating mb-3">
+            <input asp-for="Name" class="form-control" placeholder="" />
+            <label asp-for="Name" class="control-label"></label>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input asp-for="Age" class="form-control" placeholder="" />
+            <label asp-for="Age" class="control-label"></label>
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input asp-for="Heigth" class="form-control" placeholder="" />
+            <label asp-for="Heigth" class="control-label"></label>
+            <span asp-validation-for="Heigth" class="text-danger"></span>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input asp-for="Weigth" class="form-control" placeholder="" />
+            <label asp-for="Weigth" class="control-label"></label>
+            <span asp-validation-for="Weigth" class="text-danger"></span>
+        </div>
+
+        <label asp-for="IdOwner" class="control-label"></label>
+        <select asp-for="IdOwner" class="form-control">
+            @foreach (var option in ViewData["OwnersOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label asp-for="IdSpecies" class="control-label"></label>
+        <select asp-for="IdSpecies" class="form-control">
+            @foreach (var option in ViewData["SpeciesOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+    </div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>

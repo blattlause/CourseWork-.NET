@@ -1,0 +1,67 @@
+﻿@model CourceWork.Models.NoteViewModel
+
+<h2>Edit Note</h2>
+
+<form asp-controller="Note" asp-action="Edit" method="post">
+    <div class="form-floating mb-3">
+
+        <div class="form-floating mb-3">
+            <input type="datetime-local" asp-for="Date" class="form-control" />
+            <label asp-for="Date" class="control-label"></label>
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+
+        <label asp-for="IdClaim" class="control-label"></label>
+        <select asp-for="IdClaim" class="form-control">
+            @foreach (var option in ViewData["ClaimOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label asp-for="IdDiagnosis" class="control-label"></label>
+        <select asp-for="IdDiagnosis" class="form-control">
+            @foreach (var option in ViewData["DiagnosisOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label asp-for="IdVet" class="control-label"></label>
+        <select asp-for="IdVet" class="form-control">
+            @foreach (var option in ViewData["VetOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label asp-for="IdMedicine" class="control-label"></label>
+        <select asp-for="IdMedicine" class="form-control">
+            @foreach (var option in ViewData["MedicineOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label asp-for="IdMedicineCard" class="control-label"></label>
+        <select asp-for="IdMedicineCard" class="form-control">
+            @foreach (var option in ViewData["MedicineCardOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label asp-for="IdVisit" class="control-label"></label>
+        <select asp-for="IdVisit" class="form-control">
+            @foreach (var option in ViewData["VisitOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+    </div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>

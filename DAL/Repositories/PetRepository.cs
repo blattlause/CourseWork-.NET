@@ -34,7 +34,7 @@ namespace DAL.Repositories
 
         public IList<Pet> GetAll()
         {
-            return DataBase.Pet.ToList();
+            return DataBase.Pet.Include(x => x.Owner).Include(x => x.Species).Include(x => x.Visities).Include(x => x.MedicineCard).ToList();
         }
 
         public void SaveAll(IEnumerable<Pet> updatalist)

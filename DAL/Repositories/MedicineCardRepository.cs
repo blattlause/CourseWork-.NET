@@ -34,7 +34,7 @@ namespace DAL.Repositories
 
         public IList<MedicineCard> GetAll()
         {
-            return DataBase.MedicineCard.ToList();
+            return DataBase.MedicineCard.Include(x => x.Pet).ToList();
         }
 
         public void SaveAll(IEnumerable<MedicineCard> updatalist)

@@ -3,6 +3,7 @@ using BLL.DTO;
 using BLL.Services.Interfaces;
 using DAL.Intefaces;
 using DAL.Models;
+using static Azure.Core.HttpHeader;
 
 
 namespace BLL.Services.Common
@@ -27,7 +28,7 @@ namespace BLL.Services.Common
         public IList<PetDTO> GetAll()
         {
             IList<Pet> pets = repository.GetAll();
-            return pets.Select(c => mapper.Map<PetDTO>(c)).ToList();
+            return mapper.Map<IList<PetDTO>>(pets);
         }
 
         public PetDTO? GetById(int id)

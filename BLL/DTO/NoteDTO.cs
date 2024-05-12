@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,13 @@ namespace BLL.DTO
         public int IdMedicine { get; set; }
         public int IdMedicineCard { get; set; }
         public int IdVisit { get; set; }
+
+
+        public  MedicineCardDTO MedicineCard { get; set; }
+        public  DiagnosisDTO Diagnosis { get; set; }
+        public ClaimDTO Claim { get; set; }
+        public VetDTO Vet { get; set; }
+        public MedicineDTO Medicine { get; set; }
+        public VisitDTO Visit { get; set; }
     }
 }

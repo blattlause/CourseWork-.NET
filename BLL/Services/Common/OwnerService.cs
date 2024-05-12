@@ -26,8 +26,8 @@ namespace BLL.Services.Common
 
         public IList<OwnerDTO> GetAll()
         {
-            IList<Owner> owners = repository.GetAll();
-            return owners.Select(c => mapper.Map<OwnerDTO>(c)).ToList();
+            IList<Owner> OwnerDTO = repository.GetAll();
+            return mapper.Map<IList<OwnerDTO>>(OwnerDTO);
         }
 
         public OwnerDTO? GetById(int id)

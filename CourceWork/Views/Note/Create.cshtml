@@ -1,0 +1,63 @@
+﻿@model CourceWork.Models.NoteViewModel
+
+<h2>Create New Notes</h2>
+
+<form asp-controller="Note" asp-action="Create" method="post">
+    <div class="form-group">
+
+        <label class="control-label" for="Date">Date</label>
+        <input type="datetime-local" asp-for="Date" class="form-control" />
+
+        <label class="control-label" for="IdClaim">Select Claim</label>
+        <select asp-for="IdClaim" class="form-control">
+            @foreach (var option in ViewData["ClaimOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label class="control-label" for="IdDiagnosis">Select Diagnosis</label>
+        <select asp-for="IdDiagnosis" class="form-control">
+            @foreach (var option in ViewData["DiagnosisOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label class="control-label" for="IdVet">Select Diagnosis</label>
+        <select asp-for="IdVet" class="form-control">
+            @foreach (var option in ViewData["VetOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label class="control-label" for="IdMedicine">Select Medicine</label>
+        <select asp-for="IdMedicine" class="form-control">
+            @foreach (var option in ViewData["MedicineOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label class="control-label" for="IdMedicineCard">Select Medicine Cards</label>
+        <select asp-for="IdMedicineCard" class="form-control">
+            @foreach (var option in ViewData["MedicineCardOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+        <label class="control-label" for="IdVisit">Select Visit</label>
+        <select asp-for="IdVisit" class="form-control">
+            @foreach (var option in ViewData["VisitOptions"] as SelectList)
+            {
+                <option value="@option.Value" selected="@option.Selected">@option.Text</option>
+            }
+        </select>
+
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
